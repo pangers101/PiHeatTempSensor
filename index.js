@@ -6,7 +6,18 @@ let SSE = require('express-sse');
 let updateSensors = require('./lib/updateSensors.js');
 let sensors, sensArray, newSensString, currentSensString;
 
-let updateInterval = setInterval(async () => {
+let updateInterval = setInterval(getSensors, 10000);
+
+app.get('/getsensors', async (req, res, next) => {
+  let showSensors = await updateSensors();
+  res.json(showSensors);
+})
+
+app.listen(11013, (req, res) => {
+  console.log('app started listening on 11013');
+});
+
+async function getSensors(){
   try{
     let sensArray = await updateSensors();
     console.log('CHECKING SENSORS...');
@@ -23,12 +34,4 @@ let updateInterval = setInterval(async () => {
     console.log(e);
     //throw new Error(e);
   }
-}, 10000);
-
-app.get('/temps', () => {
-  res.send('REACHED THE TEMPS');
-})
-
-app.listen(11013, () => {
-  console.log('app started listening on 11013');
-})
+}
