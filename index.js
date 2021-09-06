@@ -15,10 +15,12 @@
     res.json(showSensors);
   });
 
-  var sse = new SSE(updateSensors().then((data) => data));
+  (async () => {
+    let initialData = await updateSensors();
+    var sse = new SSE(initialData);
+    app.get('/sensorstream', sse.init);
+  })();
   
-
-  app.get('/sensorstream', sse.init);
   let updateInterval = setInterval(getSensors, 10000);
 
   app.listen(11013, (req, res) => {
