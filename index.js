@@ -15,7 +15,6 @@
     res.json(showSensors);
   });
 
-  sensArray = await updateSensors();
   var sse = new SSE(updateSensors().then((data) => data));
   
 
