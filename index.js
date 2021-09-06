@@ -6,7 +6,7 @@
   let SSE = require('express-sse');
 
   let updateSensors = require('./lib/updateSensors.js');
-  let sensors, sensArray, newSensString, currentSensString;
+  let sensors, sensArray, newSensString, currentSensString, sse;
 
   
 
@@ -17,7 +17,7 @@
 
   (async () => {
     let initialData = await updateSensors();
-    var sse = new SSE(initialData);
+    sse = new SSE(JSON.stringify(initialData));
     app.get('/sensorstream', sse.init);
   })();
   
