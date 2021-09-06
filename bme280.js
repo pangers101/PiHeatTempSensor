@@ -12,7 +12,7 @@ module.exports = async function(address){
 
   try{
     await bme280.init();
-    console.log('BME280 initialization succeeded');
+    //console.log('BME280 initialization succeeded');
     let data = await bme280.readSensorData()
     return data;
   }catch(e){

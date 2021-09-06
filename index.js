@@ -11,4 +11,4 @@ let updateInterval = setInterval(() => {
       console.log(e);
       //throw new Error(e);
     });
-}, 5000);
+}, 10000);
