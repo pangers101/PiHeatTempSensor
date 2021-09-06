@@ -1,4 +1,8 @@
 'use strict';
+let express = require('express');
+let app = express();
+let SSE = require('express-sse');
+
 let updateSensors = require('./lib/updateSensors.js');
 let sensors, sensArray, newSensString, currentSensString;
 
@@ -20,3 +24,11 @@ let updateInterval = setInterval(async () => {
     //throw new Error(e);
   }
 }, 10000);
+
+app.get('/temps', () => {
+  res.send('REACHED THE TEMPS');
+})
+
+app.listen(101013, () => {
+  console.log('app started listening on 101013');
+})
