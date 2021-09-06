@@ -1,6 +1,6 @@
 const readBme280 = require('./bme280');
 let ds18b20 = require('ds18b20');
-async () => {
+(async () => {
   let sensors = [
     {
       id: '28-0517c1fe23ff', 
@@ -34,4 +34,4 @@ async () => {
   console.log(sensors);
 
 
-}
+})();
