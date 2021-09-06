@@ -26,11 +26,8 @@ function readSensor(bme280){
   
     bme280.readSensorData()
       .then((data) => {
-        
-        data.temperature_F = BME280.convertCelciusToFahrenheit(data.temperature_C);
-        data.pressure_inHg = BME280.convertHectopascalToInchesOfMercury(data.pressure_hPa);
-
-        console.log(`data = ${JSON.stringify(data, null, 2)}`);
+        return data;
+        //console.log(`data = ${JSON.stringify(data, null, 2)}`);
         ////setTimeout(readSensorData, 2000);
       })
       .catch((err) => {
