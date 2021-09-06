@@ -1,0 +1,24 @@
+{
+  "name": "piheattempsensor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pangers101/PiHeatTempSensor.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pangers101/PiHeatTempSensor/issues"
+  },
+  "homepage": "https://github.com/pangers101/PiHeatTempSensor#readme",
+  "dependencies": {
+    "bme280": "^2.1.1",
+    "bme280-sensor": "^0.1.7",
+    "ds18b20": "^0.1.0"
+  }
+}
