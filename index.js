@@ -20,16 +20,16 @@ let ds18b20 = require('ds18b20');
     }
   ];
 
-  await sensors.forEach((sensorObj) => {
+  await Promise.all(sensors.map(async (sensorObj) => {
     switch (sensorObj.type){
       case 'ds18b20':
         sensorObj.currentTemp = ds18b20.temperatureSync(sensorObj.id);
         break;
       case 'bme280':
-        sensorObj.data = readBme280(sensorObj.i2cAddress);
+        sensorObj.data = await readBme280(sensorObj.i2cAddress);
         break;
     }
-  });
+  }));
 
   console.log(sensors);
 
