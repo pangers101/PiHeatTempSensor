@@ -27,12 +27,11 @@ let ds18b20 = require('ds18b20');
         break;
       case 'bme280':
         sensorObj.data = await readBme280(sensorObj.i2cAddress);
-        console.log(sensorObj);
         break;
     }
   });
 
-  
+  console.log(sensors);
 
 
 })();
