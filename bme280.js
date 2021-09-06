@@ -15,7 +15,7 @@ module.exports = async function(address){
     console.log('BME280 initialization succeeded');
     return readSensor(bme280);
   }catch(e){
-    console.error(`BME280 initialization failed: ${e} `));
+    console.error(`BME280 initialization failed: ${e} `);
   }
   
 }
