@@ -26,7 +26,7 @@ let ds18b20 = require('ds18b20');
         sensorObj.currentTemp = ds18b20.temperatureSync(sensorObj.id);
         break;
       case 'bme280':
-        sensorObj.data = await readBme280(sensorObj.i2cAddress);
+        sensorObj[{ temperature_C, pressure_hPa }] = await readBme280(sensorObj.i2cAddress);
         break;
     }
   }));
