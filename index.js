@@ -1,3 +1,3 @@
-let updateSensors = ('./updateSensors.js');
+let updateSensors = require('./lib/updateSensors.js');
 
 updateSensors();
