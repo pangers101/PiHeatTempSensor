@@ -23,7 +23,7 @@ let ds18b20 = require('ds18b20');
   await sensors.forEach(async (sensorObj) => {
     switch (sensorObj.type){
       case 'ds18b20':
-        sensorObj.currentTemp = ds18b20.temperatureSync(sensorObj.id);
+        sensorObj.currentTemp = await ds18b20.temperature(sensorObj.id);
         break;
       case 'bme280':
         sensorObj.data = await readBme280(sensorObj.i2cAddress);
