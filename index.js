@@ -26,7 +26,7 @@ sensors.forEach(async (sensorObj) => {
       sensorObj.currentTemp = ds18b20.temperatureSync(sensorObj.id);
       break;
     case 'bme280':
-      sensorObj.data = await readBme280(sensorObj.i2cAddress)();
+      sensorObj.data = await readBme280(sensorObj.i2cAddress);
       break;
   }
 });
