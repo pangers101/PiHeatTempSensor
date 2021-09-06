@@ -13,7 +13,7 @@ module.exports = async function(address){
   try{
     await bme280.init();
     console.log('BME280 initialization succeeded');
-    readSensor(bme280);
+    return readSensor(bme280);
   }catch(e){
     console.error(`BME280 initialization failed: ${e} `);
   }
