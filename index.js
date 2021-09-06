@@ -14,6 +14,7 @@ let ds18b20 = require('ds18b20');
     },
     {
       type: 'bme280',
+      label: 'Pressure',
       i2cAddress: 0x76,
       pressure: true,
       temperature: false 
