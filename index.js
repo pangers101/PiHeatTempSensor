@@ -28,8 +28,8 @@ let ds18b20 = require('ds18b20');
         break;
       case 'bme280':
         data = await readBme280(sensorObj.i2cAddress);
-        data.currentTemp = data.temperature_C;
-        data.pressure = data.pressure_hPa;
+        sensorObj.currentTemp = data.temperature_C;
+        sensorObj.currentPressure = data.pressure_hPa;
         break;
     }
   }));
