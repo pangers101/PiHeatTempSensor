@@ -9,17 +9,18 @@ module.exports = function(address){
   };
 
   const bme280 = new BME280(options);
-  return initAndRead;
+  return initAndRead(bme280);
 }
 
-function initAndRead(){
-  bme280.init()
-  .then(() => {
-    console.log('BME280 initialization succeeded');
-    readSensor();
-  })
-  .catch((err) => console.error(`BME280 initialization failed: ${err} `));
-
+function initAndRead(bme280){
+  return () => {
+    bme280.init()
+    .then(() => {
+      console.log('BME280 initialization succeeded');
+      readSensor();
+    })
+    .catch((err) => console.error(`BME280 initialization failed: ${err} `));
+  }
 }
 
 function readSensor(){
