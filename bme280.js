@@ -13,28 +13,30 @@ module.exports = function(address){
 }
 
 function initAndRead(bme280){
-  return () => {
+  
     bme280.init()
     .then(() => {
       console.log('BME280 initialization succeeded');
-      readSensor();
+      return readSensor();
     })
     .catch((err) => console.error(`BME280 initialization failed: ${err} `));
-  }
+  
 }
 
 function readSensor(){
-  bme280.readSensorData()
-    .then((data) => {
-      
-      data.temperature_F = BME280.convertCelciusToFahrenheit(data.temperature_C);
-      data.pressure_inHg = BME280.convertHectopascalToInchesOfMercury(data.pressure_hPa);
+  return () => {
+    bme280.readSensorData()
+      .then((data) => {
+        
+        data.temperature_F = BME280.convertCelciusToFahrenheit(data.temperature_C);
+        data.pressure_inHg = BME280.convertHectopascalToInchesOfMercury(data.pressure_hPa);
 
-      console.log(`data = ${JSON.stringify(data, null, 2)}`);
-      setTimeout(readSensorData, 2000);
-    })
-    .catch((err) => {
-      console.log(`BME280 read error: ${err}`);
-      setTimeout(readSensorData, 2000);
-    });
+        console.log(`data = ${JSON.stringify(data, null, 2)}`);
+        //setTimeout(readSensorData, 2000);
+      })
+      .catch((err) => {
+        console.log(`BME280 read error: ${err}`);
+        //setTimeout(readSensorData, 2000);
+      });
+  }
 }
