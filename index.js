@@ -12,6 +12,10 @@ app.get('/getsensors', async (req, res, next) => {
   res.json(showSensors);
 });
 
+//POPULATE BLANK SENSORSTREAM FIRST IN CASE NOT READY
+app.get('/sensorstream', (req, res, next) => {
+  next();
+});
 (async () => {
   let initialData = await updateSensors();
   sse = new SSE(JSON.stringify(initialData));
