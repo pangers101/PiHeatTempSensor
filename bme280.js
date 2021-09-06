@@ -13,7 +13,8 @@ module.exports = async function(address){
   try{
     await bme280.init();
     console.log('BME280 initialization succeeded');
-    return readSensor(bme280);
+    let data = await bme280.readSensorData()
+    return data;
   }catch(e){
     console.error(`BME280 initialization failed: ${e} `);
   }
@@ -21,18 +22,3 @@ module.exports = async function(address){
 }
 
 
-
-function readSensor(bme280){
-  
-    bme280.readSensorData()
-      .then((data) => {
-        return data;
-        //console.log(`data = ${JSON.stringify(data, null, 2)}`);
-        ////setTimeout(readSensorData, 2000);
-      })
-      .catch((err) => {
-        console.log(`BME280 read error: ${err}`);
-        //setTimeout(readSensorData, 2000);
-      });
-  
-}
