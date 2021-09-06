@@ -1,4 +1,4 @@
-const readBme280 = require('bme280');
+const readBme280 = require('./bme280');
 let ds18b20 = require('ds18b20');
 
 let sensors = [
