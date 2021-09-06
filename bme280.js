@@ -31,7 +31,7 @@ function readSensor(bme280){
         data.pressure_inHg = BME280.convertHectopascalToInchesOfMercury(data.pressure_hPa);
 
         console.log(`data = ${JSON.stringify(data, null, 2)}`);
-        //setTimeout(readSensorData, 2000);
+        ////setTimeout(readSensorData, 2000);
       })
       .catch((err) => {
         console.log(`BME280 read error: ${err}`);
