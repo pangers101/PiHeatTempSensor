@@ -22,7 +22,7 @@ app.get('/sensorstream', (req, res, next) => {
   app.get('/sensorstream', sse.init);
 })();
 
-let updateInterval = setInterval(getSensors, 10000, app);
+let updateInterval = setInterval(getSensors, 30000, app);
 
 app.listen(11013, (req, res) => {
   console.log('app started listening on 11013');
