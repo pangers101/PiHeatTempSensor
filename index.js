@@ -8,7 +8,7 @@ let updateSensors = require('./lib/updateSensors.js');
 let sensors, sensArray, newSensString, currentSensString, sse;
 
 app.get('/getsensors', async (req, res, next) => {
-  let showSensors = ('sensors' in req.locals) ? req.locals.sensors : await updateSensors(req);
+  let showSensors = (typeof req['locals']['sensors'] !== 'undefined') ? req.locals.sensors : await updateSensors(req);
   res.json(showSensors);
 });
 
